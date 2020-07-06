@@ -1,0 +1,31 @@
+name: env
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - conda-build
+  - pip
+  - python=3.6.9
+  - setuptools
+  - bedtools
+  - bedops
+  - samtools
+  - cmake
+  - nanopolish
+  - numpy
+  - minimap2
+  - ucsc-bedtogenepred
+  - ucsc-genepredtogtf
+  - STAR
+  - gatk4
+  - pip:
+    - setuptools
+    - osfclient
+    - gnureadline
+    - cython
+    - poreplex
+    - numpy
+    - jupyter
+    - jupyterlab
+    - ipywidgets
+    - argparse

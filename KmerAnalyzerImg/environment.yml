@@ -1,0 +1,22 @@
+name: env
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - conda-build
+  - pip
+  - python
+  - setuptools
+  - samtools
+  - cmake
+  - salmon=1.2.1
+  - sra-tools
+  - parallel-fastq-dump
+  - numpy
+  - pip:
+    - setuptools
+    - gnureadline
+    - jupyter
+    - jupyterlab
+    - ipywidgets
+    - argparse

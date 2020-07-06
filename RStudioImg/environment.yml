@@ -1,0 +1,20 @@
+name: env
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - conda-build
+  - pip
+  - python
+  - setuptools
+  - ipywidgets
+  - plotly
+  - nodejs
+  - pip:
+    - setuptools
+    - gnureadline
+    - numpy
+    - jupyter
+    - jupyterlab
+    - ipywidgets
+    - argparse
