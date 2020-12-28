@@ -9,9 +9,8 @@ dependencies:
   - setuptools
   - samtools
   - cmake
-  - salmon=1.2.1
+  - salmon
   - sra-tools
-  - parallel-fastq-dump
   - numpy
   - pip:
     - setuptools
