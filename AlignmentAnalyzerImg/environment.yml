@@ -11,8 +11,7 @@ dependencies:
   - bedops
   - samtools
   - cmake
-  - nanopolish
-  - numpy
+#  - nanopolish
   - minimap2
   - ucsc-bedtogenepred
   - ucsc-genepredtogtf
@@ -23,8 +22,8 @@ dependencies:
     - osfclient
     - gnureadline
     - cython
-    - poreplex
-    - numpy
+ #   - poreplex
+ #   - numpy
     - jupyter
     - jupyterlab
     - ipywidgets

@@ -1,7 +1,6 @@
 # Image to process and analyze Nanopore RNA-seq data
 #FROM ubuntu:18.04
-FROM rocm/tensorflow:latest
-MAINTAINER Diego Borges <dborgesrmit@gmail.com>
+FROM rocm/tensorflow:rocm4.0-tf2.4-dev
 USER root
 
 ENV APT_PACKAGES=" \
@@ -41,8 +40,8 @@ RUN apt-get update && \
 #Get conda dependencies
 COPY environment.yml /tmp/environment.yml
 #Get Anaconda and intialize python env
-ENV CONDA_VERSION="4.7.12.1"
-RUN curl -s -L https://repo.anaconda.com/miniconda/Miniconda3-$CONDA_VERSION-Linux-x86_64.sh > miniconda.sh && \
+ENV CONDA_VERSION="4.9.2"
+RUN curl -s -L https://repo.anaconda.com/miniconda/Miniconda3-py39_$CONDA_VERSION-Linux-x86_64.sh > miniconda.sh && \
     bash miniconda.sh -u -b -p /opt/conda && \
     rm miniconda.sh && \
     export PATH=/opt/conda/bin:$PATH && \

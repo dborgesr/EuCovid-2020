@@ -14,7 +14,7 @@ ENV APT_PACKAGES=" \
 		zlib1g-dev \
 		libgsl0-dev \
 		wget \
-#		build-essential \
+		build-essential \
 		curl \
 		zip \
 		"

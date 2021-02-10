@@ -1,6 +1,5 @@
 # Image for general R work (RStudio) with Jupyterlab
 FROM bioconductor/bioconductor_docker:devel
-MAINTAINER Diego Borges <dborgesrmit@gmail.com>
 USER root
 
 ENV APT_PACKAGES=" \
@@ -29,8 +28,8 @@ RUN apt-get update && \
 #Get conda dependencies
 COPY environment.yml /tmp/environment.yml
 #Get Anaconda and intialize python env
-ENV CONDA_VERSION="4.7.12.1"
-RUN curl -s -L https://repo.anaconda.com/miniconda/Miniconda3-$CONDA_VERSION-Linux-x86_64.sh > miniconda.sh && \
+ENV CONDA_VERSION="4.9.2"
+RUN curl -s -L https://repo.anaconda.com/miniconda/Miniconda3-py37_$CONDA_VERSION-Linux-x86_64.sh > miniconda.sh && \
     bash miniconda.sh -u -b -p /opt/conda && \
     rm miniconda.sh && \
     export PATH=/opt/conda/bin:$PATH && \
@@ -61,7 +60,7 @@ RUN jupyter notebook --generate-config && \
 	sed -i "/c.NotebookApp.open_browser/c c.NotebookApp.open_browser = False" "$JUPYTER_PREFIX".jupyter/jupyter_notebook_config.py \
         && sed -i "/c.NotebookApp.ip/c c.NotebookApp.ip = '*'" "$JUPYTER_PREFIX".jupyter/jupyter_notebook_config.py \
         && sed -i "/c.NotebookApp.notebook_dir/c c.NotebookApp.notebook_dir = '/data/Eucovid'" "$JUPYTER_PREFIX".jupyter/jupyter_notebook_config.py \
-        && sed -i "/c.NotebookApp.token/c c.NotebookApp.token = 'eucovid'" "$JUPYTER_PREFIX".jupyter/jupyter_notebook_config.py \
+        && sed -i "/c.NotebookApp.token/c c.NotebookApp.token = '8$luRF9SQOhi+e7KboWdarPw$O0QKnNEcXmb1IRK0KHDrag'" "$JUPYTER_PREFIX".jupyter/jupyter_notebook_config.py \
         && sed -i "/c.NotebookApp.iopub_data_rate_limit/c c.NotebookApp.iopub_data_rate_limit = 10000000" "$JUPYTER_PREFIX".jupyter/jupyter_notebook_config.py
 
 #Define default startup behavior

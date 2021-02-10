@@ -2,12 +2,15 @@ name: env
 channels:
   - conda-forge
   - bioconda
+  - tmap
 dependencies:
   - conda-build
   - pip
   - python
   - setuptools
   - cmake
+  - faerun
+  - tmap
   - pip:
     - setuptools
     - gnureadline
@@ -26,3 +29,7 @@ dependencies:
     - gunicorn
     - jupyter
     - jupyterlab
+    - hdbscan
+    - cellxgene
+    - scanpy
+    - leidenalg

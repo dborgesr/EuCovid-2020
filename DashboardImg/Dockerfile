@@ -40,8 +40,8 @@ RUN apt-get update && \
 #Get conda dependencies
 COPY environment.yml /tmp/environment.yml
 #Get Anaconda and intialize python env
-ENV CONDA_VERSION="4.7.12.1"
-RUN curl -s -L https://repo.anaconda.com/miniconda/Miniconda3-$CONDA_VERSION-Linux-x86_64.sh > miniconda.sh && \
+ENV CONDA_VERSION="4.9.2"
+RUN curl -s -L https://repo.anaconda.com/miniconda/Miniconda3-py37_$CONDA_VERSION-Linux-x86_64.sh > miniconda.sh && \
     bash miniconda.sh -u -b -p /opt/conda && \
     rm miniconda.sh && \
     export PATH=/opt/conda/bin:$PATH && \
@@ -68,19 +68,19 @@ RUN echo "export PATH=/opt/conda/envs/env/bin/:/opt/conda/bin/:$PATH" > ~/.bashr
 
 #Configure jupyter
 ENV JUPYTER_PREFIX="/root/"
-RUN jupyter notebook --generate-config && \
-	sed -i "/c.NotebookApp.open_browser/c c.NotebookApp.open_browser = False" "$JUPYTER_PREFIX".jupyter/jupyter_notebook_config.py \
+RUN jupyter notebook --generate-config \
+        && sed -i "/c.NotebookApp.open_browser/c c.NotebookApp.open_browser = False" "$JUPYTER_PREFIX".jupyter/jupyter_notebook_config.py \
+        && sed -i "/c.NotebookApp.password/c c.NotebookApp.password = u'argon2:$argon2id$v=19$m=10240,t=10,p=8$Y1Jg3uVSKRAvdWdUoeRn9g$ZPhe0bB3WS9kM+BimuxhgQ'" "$JUPYTER_PREFIX".jupyter/jupyter_notebook_config.py \
         && sed -i "/c.NotebookApp.ip/c c.NotebookApp.ip = '*'" "$JUPYTER_PREFIX".jupyter/jupyter_notebook_config.py \
         && sed -i "/c.NotebookApp.notebook_dir/c c.NotebookApp.notebook_dir = '/data/Euplotid'" "$JUPYTER_PREFIX".jupyter/jupyter_notebook_config.py \
-        && sed -i "/c.NotebookApp.token/c c.NotebookApp.token = 'euplotid'" "$JUPYTER_PREFIX".jupyter/jupyter_notebook_config.py \
         && sed -i "/c.NotebookApp.iopub_data_rate_limit/c c.NotebookApp.iopub_data_rate_limit = 10000000" "$JUPYTER_PREFIX".jupyter/jupyter_notebook_config.py
 
 #Define default startup behavior
 ENV EUPLO_IMAGE=kmer_analyzer
 ENV EUPLO_DEPLOY=false
 ENV EUPLO_ARCH=x86
-ENV EUPLO_OS=ubuntu
-ENV JUPYTER_PORT=8892
+ENV EUPLO_OS=debian
+ENV JUPYTER_PORT=8895
 
 EXPOSE $JUPYTER_PORT
 EXPOSE 80
